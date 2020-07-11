@@ -1,4 +1,3 @@
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -18,7 +17,9 @@ code {
   height: auto;
 }
 
-ul { padding: 0 }
+ul {
+  padding: 0;
+}
 
 .text-center {
   text-align: center;
@@ -31,12 +32,16 @@ ul { padding: 0 }
   padding: 0 1rem;
 }
 
+.edit-form {
+  margin: 0 auto;
+}
+
 .center {
-  margin:0;
+  margin: 0;
   position: absolute;
   top: 50%;
-  left:50%;
-  transform:translate(-50%,-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .no-margin {
@@ -85,9 +90,9 @@ ul { padding: 0 }
       margin: 0;
       color: #888585;
     }
-  
+
     .card__body-text {
-      font-size: 1rem;  
+      font-size: 1rem;
     }
   }
 
@@ -107,29 +112,28 @@ ul { padding: 0 }
 
       .card__title {
         margin-bottom: 0.2rem;
-        font-size: 1rem;      
+        font-size: 1rem;
       }
-  
+
       .card__sub-title {
         font-size: 0.8rem;
         font-weight: 400;
         margin: 0;
       }
-  
+
       .card__body-text {
         font-size: 0.7rem;
       }
-
     }
   }
 }
 
 .btn {
- margin: 1rem;
- padding: 0.8rem 1.5rem;
- background: none;
- border-radius: none; 
- cursor: pointer;
+  margin: 1rem;
+  padding: 0.8rem 1.5rem;
+  background: none;
+  border-radius: none;
+  cursor: pointer;
 }
 
 .btn-primary {
@@ -160,15 +164,14 @@ ul { padding: 0 }
     left: 0;
     width: 99%;
     background: #fff;
-    position: fixed; 
-  }   
+    position: fixed;
+  }
 
   .navbar-left {
     display: flex;
     align-items: center;
 
     .navbar__logo {
-
     }
 
     .navbar__title {
@@ -207,7 +210,7 @@ ul { padding: 0 }
   }
 
   &::after {
-    content: '▼';
+    content: "▼";
     font-size: 0.8rem;
     margin-left: 0.3rem;
   }
@@ -224,9 +227,9 @@ ul { padding: 0 }
       right: 0;
       min-width: 5rem;
       display: block;
-      z-index: 9999;    
+      z-index: 9999;
       background: #fff;
-      
+
       ul {
         list-style: none;
         margin: 0;
@@ -247,7 +250,6 @@ ul { padding: 0 }
 }
 
 .autocomplete-dropdown {
-
   .loader {
     position: absolute;
     right: 0;
@@ -257,7 +259,7 @@ ul { padding: 0 }
 }
 
 .content__main {
-  display: flex;  
+  display: flex;
   margin: 5rem 0;
   padding: 0 2rem;
 
@@ -299,14 +301,14 @@ ul { padding: 0 }
 }
 
 .grid {
-  display: flex;  
+  display: flex;
   flex-wrap: wrap;
 }
 
-.provider-card {  
-  margin: 1rem; 
+.provider-card {
+  margin: 1rem;
   // width: 15rem;
-  
+
   .provider-card__lower {
     display: flex;
     justify-content: space-between;
@@ -318,7 +320,7 @@ ul { padding: 0 }
     .provider-rating {
       color: #c3c2c2;
       &::before {
-        content:'🌟';
+        content: "🌟";
       }
     }
 
@@ -331,7 +333,7 @@ ul { padding: 0 }
 .form {
   display: flex;
   flex-direction: column;
-  
+
   .form-group {
     display: flex;
     flex-direction: column;
@@ -345,12 +347,12 @@ ul { padding: 0 }
 }
 
 .input__search[placeholder] {
-  font-family: 'Font Awesome 5 Free', sans-serif !important;
+  font-family: "Font Awesome 5 Free", sans-serif !important;
 }
 
 .select {
-  @extend .dropdown;  
-  -webkit-appearance: none;  
+  @extend .dropdown;
+  -webkit-appearance: none;
 }
 
 .input__style_1 {
@@ -411,7 +413,7 @@ ul { padding: 0 }
           width: 100%;
           color: white;
           z-index: 1;
-          
+
           .gallery__slider-item__info-name {
             margin: 0.5rem 1rem;
             font-weight: 800;
@@ -427,20 +429,21 @@ ul { padding: 0 }
 
         &.active {
           height: 100%;
-          position: absolute;     
-          box-shadow: 0 0 3px 1px #75757585; 
-          z-index: 1;    
+          position: absolute;
+          box-shadow: 0 0 3px 1px #75757585;
+          z-index: 1;
 
           img {
             width: 100% !important;
           }
         }
-  
-        &.prev::after, &.next::after {
-          content:'';
+
+        &.prev::after,
+        &.next::after {
+          content: "";
           position: absolute;
-          left:0;
-          width:100%;
+          left: 0;
+          width: 100%;
           height: 100%;
           background-color: #a3a4a78f;
         }
@@ -450,7 +453,7 @@ ul { padding: 0 }
           width: 100% !important;
         }
       }
-    }    
+    }
 
     .gallery__slider-controls {
       position: absolute;
@@ -465,11 +468,9 @@ ul { padding: 0 }
         cursor: pointer;
 
         &.left {
-
         }
 
         &.right {
-
         }
       }
     }
@@ -488,7 +489,7 @@ ul { padding: 0 }
       width: 5rem;
       height: 3rem;
       margin: 0rem 0.3rem;
-      cursor: pointer;      
+      cursor: pointer;
       background-repeat: no-repeat;
       background-position: center center;
       background-size: cover;

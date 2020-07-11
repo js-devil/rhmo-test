@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 const ProviderCard = ({
-  imageUrl = 'https://via.placeholder.com/400x200',
+  imageUrl = "https://via.placeholder.com/400x200",
   name,
   address,
   rating,
   providerType,
-  cardType
+  cardType,
 }) => (
   <div className={`card provider-card ${cardType} `}>
     {/* <div className="btn btn-sm like">
@@ -34,7 +34,7 @@ ProviderCard.propTypes = {
   name: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
   providerType: PropTypes.string.isRequired,
-  cardType: PropTypes.string.isRequired
+  cardType: PropTypes.string.isRequired,
 };
 
 export default ProviderCard;

@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import ProviderCard from './ProviderCard';
+import React from "react";
+import PropTypes from "prop-types";
+import ProviderCard from "./ProviderCard";
 
 const List = ({ items }) => (
   <ul className="list">
@@ -8,32 +8,34 @@ const List = ({ items }) => (
       <li>
         <p>No Providers Found.</p>
       </li>
-    )
-      : items.map(provider => (
+    ) : (
+      items.map((provider) => (
         <ProviderCard
           key={provider.id}
-          address={provider.location.address}
+          address={provider.address}
           imageUrl={provider.imageUrl}
           name={provider.name}
           rating={provider.rating}
-          providerType={provider.type}
+          providerType={provider.providerType}
           cardType="sm"
         />
       ))
-    }
+    )}
   </ul>
 );
 
 List.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    address: PropTypes.string,
-    name: PropTypes.string,
-    imageUrl: PropTypes.string,
-    rating: PropTypes.number,
-    providerType: PropTypes.string
-  })).isRequired,
-  onClick: PropTypes.instanceOf(Function)
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      address: PropTypes.string,
+      name: PropTypes.string,
+      imageUrl: PropTypes.string,
+      rating: PropTypes.number,
+      providerType: PropTypes.string,
+    })
+  ).isRequired,
+  onClick: PropTypes.instanceOf(Function),
 };
 
 export default List;
