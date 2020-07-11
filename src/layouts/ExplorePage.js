@@ -44,13 +44,18 @@ class ExplorePage extends React.Component {
     // On input, filter Available Providers based on Name, Address and Type
     //
     // ============== CODE GOES BELOW THIS LINE :) ==============
+
+    // const path = pathGet(this.state.data, event.target.value);
+
     this.setState({
-      data: this.state.initialData.filter(
-        (key) =>
-          key.name.toLowerCase().includes(event.target.value) ||
-          key.address.toLowerCase().includes(event.target.value) ||
-          key.provider_type.name.toLowerCase().includes(event.target.value)
-      ),
+      data: this.state.initialData
+        .filter((key) => key.name !== null)
+        .filter(
+          (key) =>
+            key.name.toLowerCase().includes(event.target.value) ||
+            key.address.toLowerCase().includes(event.target.value) ||
+            key.provider_type.name.toLowerCase().includes(event.target.value)
+        ),
     });
   };
 
@@ -67,7 +72,7 @@ class ExplorePage extends React.Component {
 
   addProvider = (payload) => {
     let formData = new FormData();
-    for (let key in payload) formData.append([key], payload[key]);
+    for (let key in payload) formData.append([key], String(payload[key]));
 
     this.setLoading(true);
     ApiService.post(ApiService.ENDPOINTS.providers, formData).then((data) => {

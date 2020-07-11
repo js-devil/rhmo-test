@@ -24,12 +24,10 @@ export const pathGet = (arr1, query) => {
 
   const path = find(arr1, query);
   if (path == null) return "";
-  console.log(path);
 
   let str = "";
   for (let i of path) str += isNaN(i) ? `.${i}` : `[${i}]`;
-  console.log(str);
-  return str;
+  return str[0] == "." ? str.slice(1) : str;
 };
 
 const find = (obj, item) => {

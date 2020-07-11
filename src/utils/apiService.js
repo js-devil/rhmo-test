@@ -45,9 +45,10 @@ class ApiService {
   static async post(url, data) {
     const response = await fetch(url, {
       method: "POST",
-      body: JSON.stringify(data),
+      body: data,
       headers: {
-        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Content-Type": "multipart/form-data",
         Authorization: `Bearer ${token}`,
       },
     });
@@ -56,10 +57,12 @@ class ApiService {
 
   static async put(url, data) {
     const response = await fetch(url, {
-      method: "POST",
-      body: JSON.stringify(data),
+      method: "PUT",
+      body: data,
       headers: {
-        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Content-Type": "multipart/form-data",
+
         Authorization: `Bearer ${token}`,
       },
     });

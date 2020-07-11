@@ -18,12 +18,10 @@ class NewProviderForm extends React.Component {
         address: "",
         provider_type: "",
         state: "",
-        imageUrl: "",
+        imageUrl: "https://via.placeholder.com/1500x840",
       },
       error: false,
-      fileUrl:
-        this.props?.provider?.imageUrl ||
-        "https://via.placeholder.com/1500x840",
+      fileUrl: null,
     };
   }
 
@@ -41,35 +39,41 @@ class NewProviderForm extends React.Component {
       this.setState({
         provider: {
           ...this.state.provider,
-          imageUrl: event.target.files[0],
+          imageUrl: URL.createObjectURL(event.target.files[0]),
         },
-        fileUrl: URL.createObjectURL(event.target.files[0]),
+        file: event.target.files[0],
       });
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
     const payload = this.state.provider;
-    const { imageUrl } = payload;
-
+    console.log(payload);
     let count = 0;
-    for (let i in payload) if (!payload[i].length) count++;
-    if (payload.imageUrl.name) count--;
 
-    if (count) return this.setState({ error: true });
-    if (payload.rating == 0) this.setState({ error: true });
+    for (let i in payload)
+      if (i !== "id" && (!payload[i] || !payload[i].length)) count++;
 
+    if (
+      !payload.imageUrl ||
+      payload.imageUrl === "https://via.placeholder.com/1500x840"
+    )
+      count++;
+
+    if (payload.rating > 0) count--;
+
+    if (count > 0) return this.setState({ error: true });
     this.setState({ error: false });
     this.props.submit({
       ...payload,
       active_status: payload.id ? payload.active_status : "Pending",
       rating: Number(payload.rating),
+      imageUrl: this.state.fileUrl ? this.state.fileUrl : payload.imageUrl,
     });
   };
 
   render() {
     const data = this.state.provider;
-    // console.log(data);
 
     return (
       <form
@@ -195,7 +199,7 @@ class NewProviderForm extends React.Component {
           <label htmlFor="image">Provider Image</label>
           <img
             className="img-responsive"
-            src={this.state.fileUrl}
+            src={data.imageUrl}
             alt="new provider"
           />
           <input

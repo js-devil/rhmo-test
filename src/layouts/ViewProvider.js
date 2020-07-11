@@ -9,36 +9,36 @@ const ViewProvider = () => {
   const item = (data.state.items || []).find((key) => key.id === data.state.id);
 
   const editProvider = (payload) => {
-    // payload.id = undefined;
-    // payload = JSON.parse(JSON.stringify(payload));
-    console.log(payload);
-    // this.setLoading(true);
-    // ApiService.put(
-    //   `${ApiService.ENDPOINTS.providers}/${payload.id}`,
-    //   payload
-    // ).then((data) => {
-    //   console.log(data);
-    // });
+    const id = payload.id;
+    payload.id = undefined;
+    payload = JSON.parse(JSON.stringify(payload));
+
+    let formData = new FormData();
+    for (let key in payload) formData.append([key], String(payload[key]));
+
+    ApiService.put(`${ApiService.ENDPOINTS.providers}/${id}`, formData).then(
+      (data) => {
+        console.log(data);
+      }
+    );
   };
 
   return item ? (
-    <>
-      <h1>
-        View Provider
-        <span>
-          <i className="fa fa-edit"></i>
-        </span>
-      </h1>
+    <section className="main__new-provider fixed">
+      <div className="new-provider">
+        <h2 className="text-header">Can't find a Provider?</h2>
+        <p className="text-body">Feel free to recommend a new one.</p>
+        <hr />
+        <h1>
+          View Provider
+          <span>
+            <i className="fa fa-edit"></i>
+          </span>
+        </h1>
 
-      <div className="edit-form">
-        <NewProviderForm
-          provider={item}
-          submit={(e) => {
-            editProvider(e);
-          }}
-        />
+        <NewProviderForm provider={item} submit={editProvider} />
       </div>
-    </>
+    </section>
   ) : (
     <Redirect to="/" />
   );
